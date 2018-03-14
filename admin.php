@@ -16,7 +16,6 @@ if ($db_select)
                   <p> What table do you want to view?
 	            <select name="table" id="table">
                   <?php 
-                        //print_r($db_connect);
                         $sql = "SHOW TABLES FROM theitconnection";
                         $result = mysqli_query($db_connect, $sql);
                         while($row = mysqli_fetch_assoc($result))
@@ -50,5 +49,4 @@ if ($db_select)
       else echo "Couldn't connect to the database";
 }
 else echo "Database NOT Found";
-//header('location: admin.php');
 ?>
