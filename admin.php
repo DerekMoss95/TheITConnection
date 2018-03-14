@@ -13,8 +13,9 @@ if ($db_select)
             {
                   ?>
                   <div class="Title">"Welcome, this is the admin page.</div><br><br>
-                  <p> What table do you want to view?
-	            <select name="table" id="table">
+                  <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+	            <label for='formtables[]'>Select the table you want to display:</label><br>
+	            <select name="formtables[]">
                   <?php 
                         $sql = "SHOW TABLES FROM theitconnection";
                         $result = mysqli_query($db_connect, $sql);
@@ -23,24 +24,50 @@ if ($db_select)
                               $tables = $row['Tables_in_theitconnection'];
                               echo('<option value='.$tables.'>'.$tables.'</option>');
                         }
-                  ?>
-	            </select> 
-	            </p>
 
+                  ?>
+	            <input type="submit" name="formSubmit" value="Submit" >
+                  </form>
+	            </p>
                   <?php
-	                  if(isset($_POST['submit']) )
-	                  {
-	                        $table = $_POST['table'];
-                        }
-                        if ($table == "customers")
+                  if(isset($_POST['formSubmit']))
+                  {
+                        $table = $_POST['formtables'];
+                        $table = $table[0];
                         {
-                              echo '<select name="table">';
+                              // output data of each row
+                              echo "<table>";
+                              $sql = "SELECT * FROM $table";
+                              $result = mysqli_query($db_connect, $sql);
+                              $j=0;
+                              $tableline;
+                              while($row = $result->fetch_assoc()) 
+                              {
+                                    echo "<tr>";
+                                    $i=0;
+                                    $key = array();
+                                    while (key($row))
+                                    {
+                                          $key[$i] = key($row);
+                                          next($row);
+                                          echo "<td>" . $key[$j] . "</td><td>" . $row[$key[$i]] . "</td>";
+                                    }
+                                    $j++;
+                                    echo "</tr>";
+                              }
+                              echo "</table>";
                         }
+                  }
+                  else 
+                  {
+                        echo "0 results";
+                  }
+                        
+
 	            ?>
 
                   <a href="logout.php">Logout</a> <?php
-            }
-            else 
+            }else 
             {
                   echo "Need to be logged in as an admin to see this page. Do you want to log in?";
                   ?> <a href="login.php"> Login </a> <?php
