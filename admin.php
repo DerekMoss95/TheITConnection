@@ -1,3 +1,7 @@
+<html>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
 <?php
 include 'dbconnect.php';
 session_start();
@@ -40,7 +44,6 @@ if ($db_select)
                               $sql = "SELECT * FROM $table";
                               $result = mysqli_query($db_connect, $sql);
                               $j=0;
-                              $tableline;
                               while($row = $result->fetch_assoc()) 
                               {
                                     echo "<tr>";
