@@ -23,26 +23,12 @@ if ($db_select)
                         {
                               $tables = $row['Tables_in_theitconnection'];
                               echo('<option value='.$tables.'>'.$tables.'</option>');
-                              //mysqli_free_result($result);
                         }
-                        //mysqli_close($result);
                   ?>
-                  <!-- <option value="">Select...</option>
-	            <option value="customers">Customers</option>
-	            <option value="commercial">Commercial User Info</option>
-                  <option value="mentor">Mentors</option>
-	            <option value="student">Students</option>
-	            <option value="languagesN">Languages Necessary</option>
-	            <option value="softwareN">Software Necessary</option>
-	            <option value="hardwareN">Hardware Necessary</option>
-	            <option value="programmingP">Programming Projects</option>
-	            <option value="softwareP">Software Projects</option>
-	            <option value="hardwareP">Hardware Projects</option>-->
 	            </select> 
 	            </p>
 
                   <?php
-                  	$table = "";
 	                  if(isset($_POST['submit']) )
 	                  {
 	                        $table = $_POST['table'];
