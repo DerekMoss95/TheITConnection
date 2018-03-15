@@ -214,9 +214,8 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-table {
-  border-collapse: collapse;
-  border-bottom-width: 2px;
+table, th, td, tr {
+  border: 1px solid black;
 }
 
 caption {
@@ -1678,7 +1677,7 @@ pre code {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  border: 1px solid #dee2e6;
 }
 
 .table thead th {
