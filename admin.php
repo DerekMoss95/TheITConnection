@@ -80,7 +80,7 @@ if ($db_select)
 	            ?>
 
 
-                  <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+                  <form method="post">
 	            <label for='formaddtables[]'>Select the table you want to insert to:</label><br>
 	            <select name="formaddtables[]">
                   <?php 
@@ -91,13 +91,13 @@ if ($db_select)
                               $tables = $row['Tables_in_theitconnection'];
                               echo('<option value='.$tables.'>'.$tables.'</option>');
                         }
-
                   ?>
 	            <input type="submit" name="form2Submit" value="Submit" >
                   </form>
                   </p>
                   <table>
                   <?php
+
                   if(isset($_POST['form2Submit']))
                   {
                         $table = $_POST['formaddtables'];
@@ -124,8 +124,9 @@ if ($db_select)
                   
                   
                          ?>
-                        <form method="post">
+                        <form method="post" action="insert.php">
                         <label for='form2submit'></label><br>
+                        <select name="form2submit[]">
                         <?php 
                         echo "<tr>";
                         $column = array();
@@ -169,7 +170,6 @@ if ($db_select)
                         $key4 = $column[$d+3];
                         $key5 = $column[$d+4];
 
-                        echo $_POST[$column[$d]];
                         $val1 = $_POST[$column[$d]];
                         $val2 = $_POST[$column[$d+1]];
                         $val3 = $_POST[$column[$d+2]];
@@ -183,21 +183,21 @@ if ($db_select)
                   
                               //$sql = "INSERT INTO customers (firstName, lastName, email, phonenum, passwordhash) VALUES ('$b', 'qwdqw', 'wevwe', '2345', 'askuhuishc')"; 
                               //$db_connect->query($sql);
-                        if (isset($_POST['form2submit']))
+                        if (isset($_POST['form2Submit']))
                         {
 
-                              if ($val1 == "passwordhash" || $val2 == "passwordhash" || $val3 == "passwordhash" || $val4 == "passwordhash" || $val5 == "passwordhash")
-                              {
-                                    echo "is password";
-                              }
+                              // if ($val1 == "passwordhash" || $val2 == "passwordhash" || $val3 == "passwordhash" || $val4 == "passwordhash" || $val5 == "passwordhash")
+                              // {
+                              //       echo "is password";
+                              // }
 
-                              $sql = "INSERT INTO $table ($key1, $key2, $key3, $key4, $key5) VALUES ('$val1', '$val2', '$val3', '$val4', '$val5')"; 
-                              $db_connect->query($sql);
+                              // $sql = "INSERT INTO $table ($key1, $key2, $key3, $key4, $key5) VALUES ('$val1', '$val2', '$val3', '$val4', '$val5')"; 
+                              // $db_connect->query($sql);
 
                         
                         } 
                         }?>
-                        <input id="submit" type="submit" name="form2submit" value="Submit">save</input> 
+                        <input id="<?php echo $tables; ?>" type="submit" name="form2submit" value="Submit">save</input> 
                        
                         </form>
                   <?php
