@@ -1,7 +1,5 @@
 <?php
  
-//Sample Database Connection Script 
-
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
@@ -12,8 +10,6 @@ $Username = 'theitconnectionadmin';
 $Password = 'it350giboney';
 $customers = 'customers';
 $admins = 'admins';
-
-//Connect to the database
 
 $db_conn = new PDO('mysql:host=localhost;dbname=theitconnection', 'theitconnectionadmin', 'it350giboney');
 $db_conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);

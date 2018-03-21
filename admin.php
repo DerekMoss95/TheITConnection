@@ -1,6 +1,5 @@
 <html>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
-<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
 
 <?php
 include 'dbconnect.php';
@@ -38,7 +37,6 @@ if ($db_select)
                         $table = $table[0];
                         echo "<h1><u>".$table." Table</u></h1>";
                         {
-                              // output data of each row
                               echo "<table>";
                               $sql = "SELECT * FROM $table";
                               $result = mysqli_query($db_connect, $sql);
@@ -47,7 +45,6 @@ if ($db_select)
                               $k=0;
                               while($row = $result->fetch_assoc()) 
                               {
-                                    //echo "<tr>";
                                     $key = array();
                                     while (key($row))
                                     {
@@ -146,55 +143,14 @@ if ($db_select)
                               $c++;
                               echo "<tr>";
                               }
-                              //echo $a;
-                              //echo $b;
-                              //echo $c;
-                              //echo $d;
                         }
                         ?>
                         </table>
                         <input id="form2Submit" type="submit" name="form2submit" value="<?php echo $table; ?>"></input> 
                        
                         </form>
-                        <!-- <?php
-                        // $key1 = $column[$d];
-                        // $key2 = $column[$d+1];
-                        // $key3 = $column[$d+2];
-                        // $key4 = $column[$d+3];
-                        // $key5 = $column[$d+4];
-
-                        // $val1 = $_POST[$column[$d]];
-                        // $val2 = $_POST[$column[$d+1]];
-                        // $val3 = $_POST[$column[$d+2]];
-                        // $val4 = $_POST[$column[$d+3]];
-                        // $val5 = $_POST[$column[$d+4]];
-                         
-                         ?>
-                        <?php //echo "</tr>";
-                              //echo "hello";?> -->
-
-                  <?php 
+                  <?php } ?>
                   
-                              //$sql = "INSERT INTO customers (firstName, lastName, email, phonenum, passwordhash) VALUES ('$b', 'qwdqw', 'wevwe', '2345', 'askuhuishc')"; 
-                              //$db_connect->query($sql);
-                        // if (isset($_POST['form2Submit']))
-                        // {
-
-                              // if ($val1 == "passwordhash" || $val2 == "passwordhash" || $val3 == "passwordhash" || $val4 == "passwordhash" || $val5 == "passwordhash")
-                              // {
-                              //       echo "is password";
-                              // }
-
-                              // $sql = "INSERT INTO $table ($key1, $key2, $key3, $key4, $key5) VALUES ('$val1', '$val2', '$val3', '$val4', '$val5')"; 
-                              // $db_connect->query($sql);
-
-                        
-                        //} 
-                        }?>
-                  <?php
-                  
-	            ?>
-
                   <a href="logout.php">Logout</a> <?php
             }
             else 
