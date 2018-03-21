@@ -6,7 +6,6 @@
 include 'dbconnect.php';
 session_start();
 
-      //$username = $_SESSION['username'];
       $loggedin = $_SESSION['loggedin'];
 
 if ($db_select)
@@ -19,7 +18,7 @@ if ($db_select)
                   <div class="Title">"Welcome, this is the admin page.</div><br><br>
                   <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
 	            <label for='formtables[]'>Select the table you want to display:</label><br>
-	            <select name="formtables[]">
+	            <select name="formtables[]"/>
                   <?php 
                         $sql = "SHOW TABLES FROM theitconnection";
                         $result = mysqli_query($db_connect, $sql);
@@ -30,9 +29,8 @@ if ($db_select)
                         }
 
                   ?>
-	            <input type="submit" name="formSubmit" value="Submit" >
+	            <input type="submit" name="formSubmit" value="Submit"/>
                   </form>
-	            </p>
                   <?php
                   if(isset($_POST['formSubmit']))
                   {
@@ -66,19 +64,12 @@ if ($db_select)
                                           $i++;
                                     }
                                     echo "</tr>";
-                                    echo "<br>";
                               }
                               echo "</table>";
                         }
-                  }
-                  else 
-                  {
-                        
-                  }
-                        
+                  }     
 
 	            ?>
-
 
                   <form method="post">
 	            <label for='formaddtables[]'>Select the table you want to insert to:</label><br>
@@ -126,7 +117,6 @@ if ($db_select)
                          ?>
                         <form method="post" action="insert.php">
                         <label for='form2submit'></label><br>
-                        <select name="form2submit[]">
                         <?php 
                         echo "<tr>";
                         $column = array();
@@ -144,10 +134,6 @@ if ($db_select)
                                     {
                                           $inputtype = "password";
                                     }
-                                    else if ($column[$c] == "phonenum")
-                                    {
-                                          $inputtype = "number";
-                                    }
                                     else
                                     {
                                           $inputtype = "text";
@@ -158,33 +144,41 @@ if ($db_select)
                               <?php 
                               $b++;
                               $c++;
+                              echo "<tr>";
                               }
-                              echo $a;
-                              echo $b;
-                              echo $c;
-                              echo $d;
+                              //echo $a;
+                              //echo $b;
+                              //echo $c;
+                              //echo $d;
                         }
-                        $key1 = $column[$d];
-                        $key2 = $column[$d+1];
-                        $key3 = $column[$d+2];
-                        $key4 = $column[$d+3];
-                        $key5 = $column[$d+4];
+                        ?>
+                        </table>
+                        <input id="form2Submit" type="submit" name="form2submit" value="<?php echo $table; ?>"></input> 
+                       
+                        </form>
+                        <!-- <?php
+                        // $key1 = $column[$d];
+                        // $key2 = $column[$d+1];
+                        // $key3 = $column[$d+2];
+                        // $key4 = $column[$d+3];
+                        // $key5 = $column[$d+4];
 
-                        $val1 = $_POST[$column[$d]];
-                        $val2 = $_POST[$column[$d+1]];
-                        $val3 = $_POST[$column[$d+2]];
-                        $val4 = $_POST[$column[$d+3]];
-                        $val5 = $_POST[$column[$d+4]];
+                        // $val1 = $_POST[$column[$d]];
+                        // $val2 = $_POST[$column[$d+1]];
+                        // $val3 = $_POST[$column[$d+2]];
+                        // $val4 = $_POST[$column[$d+3]];
+                        // $val5 = $_POST[$column[$d+4]];
                          
                          ?>
-                        <?php echo "</tr>"; echo "hello";?>
-                        </table>
+                        <?php //echo "</tr>";
+                              //echo "hello";?> -->
+
                   <?php 
                   
                               //$sql = "INSERT INTO customers (firstName, lastName, email, phonenum, passwordhash) VALUES ('$b', 'qwdqw', 'wevwe', '2345', 'askuhuishc')"; 
                               //$db_connect->query($sql);
-                        if (isset($_POST['form2Submit']))
-                        {
+                        // if (isset($_POST['form2Submit']))
+                        // {
 
                               // if ($val1 == "passwordhash" || $val2 == "passwordhash" || $val3 == "passwordhash" || $val4 == "passwordhash" || $val5 == "passwordhash")
                               // {
@@ -195,11 +189,8 @@ if ($db_select)
                               // $db_connect->query($sql);
 
                         
-                        } 
+                        //} 
                         }?>
-                        <input id="<?php echo $tables; ?>" type="submit" name="form2submit" value="Submit">save</input> 
-                       
-                        </form>
                   <?php
                   
 	            ?>
