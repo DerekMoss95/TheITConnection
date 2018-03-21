@@ -16,7 +16,7 @@ if ($db_select)
                   ?>
                   <div class="Title">Welcome, this is the admin page.</div>
                   <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-	            <label for='formtables[]'>Select the table you want to display:</label><br>
+	            <label for='formtables[]'><h4><b>Select the table you want to display:</b></h4></label><br>
 	            <select name="formtables[]"/>
                   <?php 
                         $sql = "SHOW TABLES FROM theitconnection";
@@ -69,7 +69,7 @@ if ($db_select)
 	            ?>
 
                   <form method="post">
-	            <label for='formaddtables[]'><b>Select the table you want to insert to:</b></label><br>
+	            <label for='formaddtables[]'><h4><b>Select the table you want to insert to:</b></h4></label><br>
 	            <select name="formaddtables[]">
                   <?php 
                         $sql = "SHOW TABLES FROM theitconnection";
