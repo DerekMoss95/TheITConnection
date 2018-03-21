@@ -14,7 +14,7 @@ if ($db_select)
             if ($loggedin)
             {
                   ?>
-                  <div class="Title">"Welcome, this is the admin page.</div><br><br>
+                  <div class="Title">Welcome, this is the admin page.</div>
                   <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
 	            <label for='formtables[]'>Select the table you want to display:</label><br>
 	            <select name="formtables[]"/>
@@ -62,14 +62,14 @@ if ($db_select)
                                     }
                                     echo "</tr>";
                               }
-                              echo "</table>";
+                              echo "</table><br>";
                         }
                   }     
 
 	            ?>
 
                   <form method="post">
-	            <label for='formaddtables[]'>Select the table you want to insert to:</label><br>
+	            <label for='formaddtables[]'><b>Select the table you want to insert to:</b></label><br>
 	            <select name="formaddtables[]">
                   <?php 
                         $sql = "SHOW TABLES FROM theitconnection";
@@ -90,7 +90,7 @@ if ($db_select)
                   {
                         $table = $_POST['formaddtables'];
                         $table = $table[0];
-                        echo "<h1><u>".$table." Table</u></h1>";
+                        echo "<h3><u>Populate the following fileds to insert to the ".$table." table.</u></h3>";
                         
                         $sql = "SELECT * FROM $table";
                         $result = mysqli_query($db_connect, $sql);
@@ -146,11 +146,12 @@ if ($db_select)
                         }
                         ?>
                         </table>
-                        <input id="form2Submit" type="submit" name="form2submit" value="<?php echo $table; ?>"></input> 
+                        <br>
+                        <input id="form2Submit" type="submit" name="form2submit" value="<?php echo 'Submit new entry to '.$table.' table?'; ?>"></input> 
                        
                         </form>
                   <?php } ?>
-                  
+                  <br>
                   <a href="logout.php">Logout</a> <?php
             }
             else 
