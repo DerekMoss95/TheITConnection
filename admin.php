@@ -147,7 +147,7 @@ if ($db_select)
                         ?>
                         </table>
                         <br>
-                        <input id="form2Submit" type="submit" name="form2submit" value="<?php echo 'Submit new entry to '.$table.' table?'; ?>"></input> 
+                        <input id="form2Submit" type="submit" name="form2submit" value="<?php echo $table; ?>"></input> 
                        
                         </form>
                   <?php } ?>
